@@ -1,0 +1,116 @@
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2em;
+  line-height: 1.3;
+}
+
+p {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1em;
+  padding-top: .5em;
+  padding-bottom:  1em;
+}
+
+.donation-card {
+  display: block;
+  margin: 0 auto;
+  background-color: #ffffff;
+  max-width: 350px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-right: 1px solid #ced3e0;
+  border-left: 1px solid #ced3e0;
+  border-bottom: 1px solid #ced3e0;
+  padding: 2em;
+}
+
+.container {
+  max-width: 600px;
+  display: block;
+  margin: 0 auto;
+  background-color: #F7F9FF;
+  padding: 3em;
+
+}
+
+#progress-bar {
+  display: block;
+  margin: 0 auto;
+  max-width: 416px;
+  background-color: #B6F2E4;
+  height: .7rem;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+#progress {
+  display: block;
+  float: left;
+  max-width: 416px;
+  height: .7rem;
+  border-top-left-radius: 8px;
+  background-color: #19CCA3;
+  width: 10%;
+}
+
+input {
+  width: 63%;
+  font-size: 1em;
+  border-top:1px solid #ced3e0;
+  border-bottom:1px solid #ced3e0;
+  border-left:1px solid #ced3e0;
+  border-right: none;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  padding-right: 0px;
+  height: 2em;
+  box-sizing: border-box;
+  margin-right: -3px;
+  text-align: left;
+  color: #ced3e0;
+}
+
+.button {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: bold;
+  background-color: #19CCA3;
+  width: 35%;
+  color: #FFFFFF;
+  border: 1px solid #19CCA3;
+  font-size: 1em;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  height: 2em;
+  box-sizing: border-box;
+  margin-left: -3px;
+}
+
+.donations {
+  position: relative;
+  background-color: #E3EBFC;
+  vertical-align: middle;
+  color: #356ae6;
+  font-size: 1em;
+  padding-top: .5em;
+  padding-bottom: .7em;
+  padding-left: 1em;
+  font-family: "IBM Plex Sans", sans-serif;
+  max-width: 400px;
+  display: block;
+  margin: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+.donations::after {
+  content: '';
+  position: absolute;
+  border: 10px solid transparent;
+  border-top-color: #E3EBFC;
+  border-bottom: 0;
+  bottom: -10px;
+  left: 88%;
+}
+
+#donationTotal {
+  font-weight: 700;
+}
