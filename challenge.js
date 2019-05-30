@@ -1,5 +1,18 @@
-//Note: without backend to accept form submission, only the error messaging will work in it's current state
+/*Guse notes:
+ - Need to find way for form to accept submission without backend
+ https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Sending_forms_through_JavaScript
 
+
+ - Need to find way for numbers to be stored temporarily without backend
+ https://stackoverflow.com/questions/27798248/storing-temporary-client-side-data
+
+ - Progress bar isn't correct, is functioning more like a download bar than a donation progress bar
+ Instead of having an animated progress bar (which would be great and should be the end goal), just have the bar check the donation amount and fill it based on percentage
+
+ - Missing: $ formatting needs to be added as js function and not as part of placeholder text on input so that user will still see it when entering the dollar amount.
+ https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number
+ https://stackoverflow.com/questions/2913236/html-text-input-field-with-currency-symbol
+*/
 
 //Update donation amount - needs to subtract total donations from the total $5000, and post new remainder in speech bubble above progress bar
 window.onload = function(){
