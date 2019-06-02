@@ -1,77 +1,114 @@
-/*Guse notes:
- - Need to find way for form to accept submission without backend
- https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Sending_forms_through_JavaScript
+//Update number of donors, total donation amount, and amount left before hitting goal. Needs to update upon successful form submission, which will be onclick since the form is not connected to a backend server
 
+  var donors = 0;
+  var goal = 5000;
+  var total = 0;
 
- - Need to find way for numbers to be stored temporarily without backend
- https://stackoverflow.com/questions/27798248/storing-temporary-client-side-data
+  function donate(){
+    //check to make sure goal hasn't been met
+    var donation_amount = document.getElementById("donation").value;
+    if (total < goal && donation_amount < 5000) {
 
- - Progress bar isn't correct, is functioning more like a download bar than a donation progress bar
- Instead of having an animated progress bar (which would be great and should be the end goal), just have the bar check the donation amount and fill it based on percentage
+    //validate that donation amount is a number greater than or equal to 5
+    if (donation_amount >= 5) {
 
- - Missing: $ formatting needs to be added as js function and not as part of placeholder text on input so that user will still see it when entering the dollar amount.
- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number
- https://stackoverflow.com/questions/2913236/html-text-input-field-with-currency-symbol
-*/
+      //clear the error message if it was there previously
+      var error_div = document.getElementById("error");
+      console.log(error_div);
+      error.style.display = "none";
 
-//Update donation amount - needs to subtract total donations from the total $5000, and post new remainder in speech bubble above progress bar
-window.onload = function(){
+      //increase the donor count
+      donors++;
+      localStorage.setItem('donors', donors);
+      console.log("donors: " + localStorage.donors);
 
-    var remainder = new Object();
-        goal = 5000;
-        donated = 3750;
-        remainder.checkRemaining = function(){
-          return this.goal - this.donated;
-        };
+      //set the donor count on the UI
+      document.getElementById("donorCount").innerHTML = localStorage.donors;
 
+      //get the value from the input
+      localStorage.setItem("donation_amount", donation_amount);
+      console.log("donation amount: " + localStorage.donation_amount);
 
-var remainder = document.getElementById('donationTotal');
-  remainder.textContent = remainder.checkRemaining();
-}
+      //update localStorage with new donation
+      var donation_total = parseFloat(total, 10) + parseFloat(donation_amount, 10);
+      total = donation_total;
+      localStorage.setItem("donation_total", donation_total);
+      console.log("donation_total: " + localStorage.donation_total);
 
-//Progress bar - needs to move as donations come in and correspond to the donation amount
-function move() {
-  var elem = document.getElementById("progress");
-  var width = 1;
-  var id = setInterval(frame, 10);
-  function frame() {
-    if (width >= 100) {
-      clearInterval(id);
-    } else {
-      width++;
-      elem.style.width = width + '%';
+      //clear donation amount from input
+      document.getElementById('donation').value = '';
+
+      //find progress bar percentage
+      var progress_bar = ((donation_total/goal) * 100);
+      localStorage.setItem("progress_bar", progress_bar);
+      console.log("progress bar: " + progress_bar);
+
+      //update css for progress div
+      var progress_bar_div = document.getElementById("progress");
+      console.log(progress_bar_div);
+      progress_bar_div.style.width = progress_bar + "%";
+
+      //find the remainder left after donatino
+      var remainder = (goal - donation_total).toFixed(2);
+      localStorage.setItem("remainder", remainder);
+      console.log(remainder);
+      document.getElementById("donationTotal").innerHTML = localStorage.remainder;
+    }
+
+    //show alert if donation amount is not greater than or equal to 5
+    else {
+        var error_div = document.getElementById("error");
+        console.log(error_div);
+        error.style.display = "block";
     }
   }
-}
 
+  //show alert if donation goal has been met
+  else {
+    //hide bar that show donation amount remaining
+    var hide_progress = document.getElementById('donations');
+    console.log(hide_progress);
+    donations.style.display = "none";
 
+    //show bar with donation amount over goal
+    var over = document.getElementById("over_goal");
+    console.log(over);
+    over_goal.style.display = "block";
 
-//Update number of donors - needs to update upon successful form submission
-var donors = {
-number: 0
-}
-window.onload = function(){
-    var form = document.getElementById('donationForm');
-      form.onsubmit = function updateDonors() {
-        donors++;
-        return donors;
-    }
-}
+    //clear the error message if it was there previously
+    var error_div = document.getElementById("error");
+    console.log(error_div);
+    error.style.display = "none";
 
+    //increase the donor count
+    donors++;
+    localStorage.setItem('donors', donors);
+    console.log("donors: " + localStorage.donors);
 
+    //set the donor count on the UI
+    document.getElementById("donorCount").innerHTML = localStorage.donors;
 
+    //get the value from the input
+    localStorage.setItem("donation_amount", donation_amount);
+    console.log("donation amount: " + localStorage.donation_amount);
 
-//Error messaging - input must contain a number greater than 5
-window.onload = function(){
-    var form = document.getElementById('donationForm');
-    var input = document.getElementById('donation')
-      form.onsubmit = function() {
+    //update localStorage with new donation
+    var donation_total = parseFloat(total, 10) + parseFloat(donation_amount, 10);
+    total = donation_total;
+    localStorage.setItem("donation_total", donation_total);
+    console.log("donation_total: " + localStorage.donation_total);
 
-        if (input >= 5) {
-          document.write('Thank you for your donation!');
-        }
-        else {
-          document.write ('Please enter a number great than 5.');
-        }
-    }
+    //clear donation amount from input
+    document.getElementById('donation').value = '';
+
+    //update css for progress div
+    var progress_bar_div = document.getElementById("progress");
+    progress_bar_div.style.width = "100%";
+
+    //find the remainder left after donatino
+    var overage = Math.abs(goal - donation_total).toFixed(2);
+    localStorage.setItem("overage", overage);
+    console.log(overage);
+    document.getElementById("overage").innerHTML = localStorage.overage;
+  }
 }
