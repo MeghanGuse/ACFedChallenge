@@ -1,3 +1,5 @@
+
+
 h1 {
   font-family: 'Poppins', sans-serif;
   font-size: 2em;
@@ -50,7 +52,7 @@ p {
   height: .7rem;
   border-top-left-radius: 8px;
   background-color: #19CCA3;
-  width: 10%;
+  width: 0%;
 }
 
 .amount {
@@ -85,7 +87,7 @@ button {
   margin-left: -3px;
 }
 
-.donations {
+#donations {
   position: relative;
   background-color: #E3EBFC;
   vertical-align: middle;
@@ -97,7 +99,7 @@ button {
   border-radius: 8px;
   margin-bottom: 15px;
 }
-.donations::after {
+#donations::after {
   content: '';
   position: absolute;
   border: 10px solid transparent;
@@ -107,6 +109,68 @@ button {
   left: 88%;
 }
 
+#over_goal {
+  display: none;
+  position: relative;
+  background-color: #E3EBFC;
+  vertical-align: middle;
+  color: #356ae6;
+  padding-left: 1em;
+  max-width: 400px;
+  margin: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+#over_goal::after {
+  content: '';
+  position: absolute;
+  border: 10px solid transparent;
+  border-top-color: #E3EBFC;
+  border-bottom: 0;
+  bottom: -10px;
+  left: 88%;
+}
 #donationTotal {
   font-weight: 700;
 }
+
+#donation {
+  color: #4E5468;
+}
+
+#error {
+  display: none;
+  position: relative;
+  background-color: #FCDEE7;
+  vertical-align: middle;
+  color: #D60D46;
+  padding-left: 1em;
+  max-width: 400px;
+  margin: auto;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+#error::after {
+  display: none;
+  content: '';
+  position: absolute;
+  border: 10px solid transparent;
+  border-bottom-color: #FCDEE7;
+  border-top: 0;
+  top: -10px;
+  left: 10%;
+}
+
+@media only screen and (max-device-width: 480px) {
+  body {
+    margin: 0;
+    display: flex;
+  }
+  .container {
+    padding: 1em;
+    max-width: 480px;
+  }
+  .amount {
+    width: 50%;
+  }
+    }
