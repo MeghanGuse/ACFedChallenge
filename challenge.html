@@ -1,4 +1,4 @@
-<!-- Enter your HTML code here -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,14 +7,18 @@
 <link href="https://fonts.googleapis.com/css?family=Poppins:700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="challenge.css">
-<script src="challenge.js"></script>
 
 </head>
 <body>
   <div class="container">
-    <div class="donations">
+    <div id="donations">
       <p>
-        <sup>$</sup><span id="donationTotal">0</span> still needed to fund this project
+        <sup>$</sup><span id="donationTotal">5000</span> still needed to fund this project
+      </p>
+    </div>
+    <div id="over_goal">
+      <p>
+        Thank you! We have exceeded our goal by <sup>$</sup><span id="overage">0</span>!
       </p>
     </div>
     <div id="progress-bar">
@@ -23,14 +27,20 @@
     <div class="donation-card">
 
       <h1>Only four days left to fund this project</h1>
-      <p>Join the <span id="donors">0</span> other donors who have already supported this project.</p>
-      <form id="donationForm" onSubmit="return updateDonors()" action="javascript:void(0)">
-  <!--Missing: $ formatting needs to be added as js function and not as part of placeholder text so that user wil still see it when entering the dollar amount.-->
-        <input class="amount" type="number" id="donation" name="donation" placeholder="$50" min="5">
-        <button type="submit" name="button">Give Now</button>
+      <p>Join the <span id="donorCount">0</span> other donors who have already supported this project.</p>
+      <form novalidate id="donationForm" action="javascript:void(0)" method="post">
+        <input class="amount" type="number" id="donation" name="donation" placeholder="$50" min="5" step=".01">
+        <button type="button" onclick="donate();" name="button">Give Now</button>
       </form>
+      <div id="error">
+        <p>
+          Please enter an amount greater than $5.
+        </p>
+      </div>
     </div>
   </div>
-
+<script src="challenge.js"></script>
 </body>
 </html>
+
+<!---->
